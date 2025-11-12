@@ -1,9 +1,9 @@
-with  open("doc/weapon.txt", encoding="utf-8") as file:
+with  open("../../doc/weapon.txt", encoding="utf-8") as file:
     print(file.read().replace("\n", " "))
 
 
 def fina_in_text(param):
-    with open("doc/sanguo_utf8.txt", "r", encoding="utf-8") as f:
+    with open("../../doc/sanguo_utf8.txt", "r", encoding="utf-8") as f:
         s = f.read().replace("\n", "")
         count = len(re.findall(param, s))
         print("人物 %s , 总共出现 %s 次" % (param, count))
@@ -14,7 +14,7 @@ def fina_in_text(param):
 import re
 
 dict = {}
-with open("doc/name.txt", encoding="utf-8") as file:
+with open("../../doc/name.txt", encoding="utf-8") as file:
     names = file.read().split("|")
     for name in names:
         dict[name] = fina_in_text(name)
@@ -27,8 +27,7 @@ print(sorted_dict)
 pp = re.findall("aa", ",bb,cc。aa")
 print(pp)
 
-
-
-dict_test={"1":"4","2":"3","3":"2"}
-sorted_dict_test = sorted(dict_test.items(),key=lambda x:x[0] )
+# 排序
+dict_test = {"1": "4", "2": "3", "3": "2"}
+sorted_dict_test = sorted(dict_test.items(), key=lambda x: x[1])
 print(sorted_dict_test)
