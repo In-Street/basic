@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 str = '鼠牛虎兔龙'
 
 print(str[0:2])
@@ -31,3 +33,30 @@ print(dict1) # {'luther': 0, '一首歌的时间': 0, '自你走后': 0}
 dict2={n:0 for n in base_zodiac_name}
 print(dict2)  # {'luther': 0, '一首歌的时间': 0, '自你走后': 0}
 
+
+print(bytes('一首歌', 'utf-8'))
+
+
+'''
+小数处理：
+		1.   格式化输出，四舍五入保留2位小数：  f'{a/b:.2f}'
+		2.  精确处理， decimal.Decimal(‘xxx’)，  (a/b).quantize()
+'''
+
+a = 12
+b=7
+print(f'{a / b:.2f}') # 四舍五入保留两位小数，输出字符串
+
+f_1 = float(f'{a/b:.2f}')  # 转为float类型
+print(f_1)
+
+round_1 = round(a / b, 2)
+print(round_1)
+
+# 精准计算
+import decimal
+
+d_1 = decimal.Decimal('12')
+d_2 = decimal.Decimal('7')
+quantize_res = (d_1/d_2).quantize(Decimal('0.000'), rounding=decimal.ROUND_HALF_UP)
+print(quantize_res)

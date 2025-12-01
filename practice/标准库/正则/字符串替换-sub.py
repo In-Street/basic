@@ -13,6 +13,6 @@ phone = '182-1111-2222 # 电话号码注释\n'
 sub_phone = re.sub(r'#.*', '', phone, flags=re.S)  #   从#开始匹配到结尾
 print(sub_phone)  # 182-1111-2222
 
-sub_phone_string = re.sub(r'\D', '', sub_phone)
+sub_phone_string = re.sub(r'\D', '', sub_phone)  #规则前面加字符r ,Python 会禁用转义解析，将\D 原样传给sub方法
 print(sub_phone_string) # 将匹配到的非数字字符替换为空串， 18211112222
 
