@@ -59,3 +59,9 @@ print(Counter(list_c) == Counter(list_d))
 # 不可重复、无序
 set_a = {1,12,14,1,5}
 print(set_a )
+
+import operator
+
+eq_res = operator.eq([1,2,3], [1,3,2])
+print(eq_res)
+

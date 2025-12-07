@@ -3,6 +3,8 @@ from decimal import Decimal
 str = '鼠牛虎兔龙'
 
 print(str[0:2])
+print(str[2:])
+print('a' not in  str)
 
 base_zodiac = '鼠牛虎兔龙蛇马羊猴鸡狗猪'
 
@@ -60,3 +62,5 @@ d_1 = decimal.Decimal('12')
 d_2 = decimal.Decimal('7')
 quantize_res = (d_1/d_2).quantize(Decimal('0.000'), rounding=decimal.ROUND_HALF_UP)
 print(quantize_res)
+
+# decimal.Decimal.from_float()
