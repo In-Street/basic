@@ -64,3 +64,38 @@ quantize_res = (d_1/d_2).quantize(Decimal('0.000'), rounding=decimal.ROUND_HALF_
 print(quantize_res)
 
 # decimal.Decimal.from_float()
+
+tup_1 = ('A','B','C','D')
+print(tup_1[1:3])
+# tup_1[1] = 'aa'  # 元组元素不可修改，报错
+
+tup_1 = (4,5,6)   # 可重新绑定到新内容
+print(tup_1)
+
+# 变量赋值
+self_a, self_b = 1, 2   # 一一赋值
+self_c = self_d = 3  #链式赋值
+# e,*f,g = [1,2,3,4,5]
+e,*f,g = '一首歌的时间'  # 星号解包
+
+# 序列解包
+h,j,k = base_zodiac_name
+print(f'{h}  -  {j}')
+
+#字典解包
+dict_a = {'AA':'痴心绝对','BB':'这种感觉','CC':'今天'}
+k1,k2,k3 = dict_a
+print(k1,k2,k3)
+
+v1,v2,v3 = dict_a.values()
+print(v1,v2,v3)
+
+item1,item2,item3  = dict_a.items()
+print(item1,item2,item3,item1[1])
+
+pop_value = dict_a.pop('AA') # 移除key，并返回对应的value值
+print(pop_value)
+
+pop_item = dict_a.popitem()
+print(type(pop_item))
+print(dict_a)
