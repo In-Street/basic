@@ -44,8 +44,6 @@ print('用户星座是：'+ zodiac_name[filter_result_count%12])
 print(month)
 
 
-
-
 # 元组中单个数字比较
 print((4) > (3))
 
@@ -66,7 +64,7 @@ print(result_count)
 ######################################################  列表   ######################################################
 a_list=['A','B','C','A']
 a_list.append('E')  #在列表尾部添加元素
-print(a_list)
+print(a_list, 'C' in a_list)
 
 a_list.insert(1,'aaaa')
 print(a_list)
@@ -93,3 +91,49 @@ print(a_list.index('E'))
 
 a_list.sort(key=lambda x:x == '一首歌的时间',reverse=True)
 print(a_list)
+
+
+######################################################  集合  ######################################################
+
+set_a= {1,2,3,4,3}
+set_b = set([4,5,6,7])
+print(f'去重：{set_a}')  # 去重
+
+#差集
+print(set_a - set_b) #  {1, 2, 3}   集合a包含且集合b不包含的元素 , 差集
+print(f'差集：{set_a.difference(set_b)}') # 差集
+set_a.difference_update(set_b)  # 移除集合a中的元素，该元素在集合b中也存在
+print(f'difference_update：{set_a}') #  {1, 2, 3}
+
+# 交集
+set_a.add(4)
+print(set_a & set_b)  # {4}  集合a 和 集合b 都包含的元素 ， 交集
+print(f'交集: {set_a.intersection(set_b)}')
+# set_a.intersection_update(set_b)
+# print(set_a)
+
+# 判断两个集合是否相交，若没有相同的元素返回True
+print(set_a.isdisjoint(set_b))
+
+
+# 并集
+print(set_a | set_b) #  {1, 2, 3, 4, 5, 6, 7}  集合a b中包含的所有元素 ， 并集
+print(f'并集：{set_a.union(set_b)}')
+
+print(set_a ^ set_b) # {1, 2, 3, 5, 6, 7}  不同时包含于集合a和b的元素， 除交集外的元素
+print(f'两个集合中不重复的元素：{set_a.symmetric_difference(set_b)}')
+print(set_a)
+set_a.symmetric_difference_update(set_b)
+print(set_a)
+
+
+# 添加元素
+set_c = {'七里香','说好的幸福呢'}
+set_c.add('枫')
+set_c.update(['晴天','蒲公英的约定'],['一首歌的时间','青花瓷'])
+print(set_c)
+
+# 删除元素
+set_c.remove('枫')  # 元素不存在时会报错
+set_c.discard('青花瓷') # 元素不存在时不会报错
+print(set_c)
