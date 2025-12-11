@@ -5,7 +5,9 @@ print(list(filter(lambda x: x > 2, list_1)))
 
 #  map(func, *iterables) : 对迭代器中的每个元素，按参数形式传入func 方法进行计算
 l_map = map(lambda x: x + 1, list_1)
+print(type(l_map))
 print(list(l_map))
+
 
 # reduce(function, iterable[, initial]) ：初始值可省略。将迭代器中的元素从左向右，作为func的两个参数传入进行累计的运算
 from functools import reduce

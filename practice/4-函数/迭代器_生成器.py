@@ -24,5 +24,10 @@ def range_yield(start, end,step):
         yield x  # yield会记录当前位置。当再次调用next时，会从记录的位置开始返回值
         x+=step
 
-for x in range_yield(10,20,3.5):
-    print(x)
+
+generator = range_yield(10, 20, 3.5)
+print(next(generator))  # 10
+print(next(generator)) # 13.5
+
+for x in generator:
+    print(f'循环中....  {x}')  # 17

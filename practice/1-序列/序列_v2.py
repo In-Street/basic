@@ -98,6 +98,8 @@ print(a_list)
 set_a= {1,2,3,4,3}
 set_b = set([4,5,6,7])
 print(f'去重：{set_a}')  # 去重
+it = iter(set_a)
+print(next(it))
 
 #差集
 print(set_a - set_b) #  {1, 2, 3}   集合a包含且集合b不包含的元素 , 差集
