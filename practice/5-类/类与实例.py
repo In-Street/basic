@@ -16,6 +16,10 @@ class Player:
     def update_phone(self, new_phone):
         self.__phone = new_phone
 
+    @property
+    def phone(self):
+        return self.__phone
+
 
 # 冗余一个空class，暂时不用时，可以使用pass关键字
 class Monster:
@@ -40,3 +44,10 @@ user_1.print_hp()
 
 user_1.__phone = '152'  #没有改变，仍是151. __xx属性只能通过方法进行修改
 user_1.print_hp()
+
+
+user_2.print_hp()
+print(user_2.phone)
+
+user_2._Player__phone = '18888'
+user_2.print_hp()
