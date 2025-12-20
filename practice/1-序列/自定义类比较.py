@@ -29,10 +29,26 @@ class Song:
 	def __hash__(self):
 		return hash((self.name, self.year))
 
+	# 打印单个对象时，python 调用 __str__
+	def __str__(self):
+		return f'名称：{self.name}，年份：{self.year}'
+
+	# 打印列表时，python 调用 __repr__
+	def __repr__(self):
+		return f'名称：{self.name}，年份：{self.year}'
+
+	# 重写 __gt__ \  __lt__ 方法，可直接应用于 min() 、max() 、sorted()
+	def __gt__(self, other):
+		return self.year > other.year
 
 song_a = Song('七里香',2004)
-song_b = Song('七里香',2004)
+song_b = Song('七里香',2005)
 song_c = Song('说好的幸福呢',2008)
 
 print(song_a == song_b)  # True
 print(song_a == song_c)
+
+songs = [song_a, song_c, song_b]
+print(songs)
+print(sorted(songs,key=lambda song: song.year,reverse=True))  # 等价于  sorted(songs,reverse=True)
+print(sorted(songs,reverse=True))
