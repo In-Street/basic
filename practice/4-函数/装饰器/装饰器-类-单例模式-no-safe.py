@@ -3,6 +3,7 @@ class Singleton:
 	"""使目标类变成单例模式"""
 
 	def __init__(self, cls):
+		print(f'装饰器类的 init 方法')
 		self.instance = None
 		self.cls = cls
 
@@ -11,7 +12,7 @@ class Singleton:
 			"""拦截实例化过程，确保只创建一个实例"""
 			import time
 			time.sleep(0.1)
-			self.instance = self.cls(*args, **kwargs)
+			self.instance = self.cls(*args, **kwargs)  # 真正创建原类实例，触发原类的 __new__ + __init__
 		return self.instance
 
 
@@ -23,7 +24,7 @@ class DataSource:
 		print(f'初始化数据源，{threading.current_thread().ident}')
 
 
-# source_1 = DataSource()
+# source_1 = DataSource()  # 调用装饰器类的 __call__
 # source_2 = DataSource()
 
 # print(source_1 is source_2)  # True，则为同一个实例
