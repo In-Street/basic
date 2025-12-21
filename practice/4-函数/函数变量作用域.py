@@ -35,7 +35,6 @@ def call_counter(func):
 def out_1(name):
 	return f'你好，{name}'
 
-
 print(out_1('Jay'))
 print(out_1('JJ'))
 
@@ -58,8 +57,8 @@ def create_change_config():
 	def set_config(key: str, value: Union[bool, str, int]):
 		old_value = config[key]
 		config[key] = value
-		str_1 = value
-		print(str_1)
+		nonlocal str_1  # 使用 nonlocal后，下面对str_1的重新赋值 就会影响外部函数的变量 str_1
+		str_1 = value   # 不使用nonlocal时，外部函数的str_1的值未改变。此处的str_1 被视为内部函数的局部变量
 		for callback in callback_notification:
 			callback(key, old_value, value)
 
@@ -69,11 +68,15 @@ def create_change_config():
 	def remove_callback(func):
 		callback_notification.remove(func)
 
+	def print_str():
+		print(f'外部函数str_1：{str_1}')
+
 	return {
 		'get': get_config,
 		'set': set_config,
 		'register': register_callback,
-		'remove': remove_callback
+		'remove': remove_callback,
+		'print':  print_str
 	}
 
 def callback_log(key,old_value,new_value):
@@ -82,6 +85,11 @@ def callback_log(key,old_value,new_value):
 
 config_1 = create_change_config()
 
-print(config_1['get']('debug'))
+#注册回调函数
 config_1['register'](callback_log)
-config_1['set']('log_level', 'ERROR')
+
+print(f'获取debug的value值：{config_1['get']('debug')}')  # 获取debug的value值：False
+
+config_1.get('print')()  # 外部函数str_1：
+config_1['set']('log_level', 'ERROR')  # 配置log_level，由INFO 更改为 ERROR
+config_1.get('print')()  # 外部函数str_1：ERROR
